@@ -1,3 +1,7 @@
+/* 
+* Took around 3hrs
+*/
+
 import java.util.Scanner;
 
 class Solution {
