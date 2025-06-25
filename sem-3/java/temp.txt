@@ -1,0 +1,16 @@
+fun
+	find word0
+	check adj
+	start check
+
+	main
+		find word0
+			check adj
+				yes
+					ans
+				no
+					find word0
+						yes
+							recursive
+						no
+							fail
