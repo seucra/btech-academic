@@ -12,6 +12,14 @@ typedef struct {
     Edge* edge;
 } Graph;
 
+typedef struct {
+    int parent; // grp leader
+    int rank; // tree dept
+} Subset;
+
+// Find: recursively finds grp leader of a node 
+
+
 // Function to create a graph
 Graph* createGraph(int V, int E) {
     Graph* graph = (Graph*)malloc(sizeof(Graph));
