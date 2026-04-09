@@ -7,17 +7,17 @@ struct node {
     struct node* next;
 };
 
-// Initialize memory
 void initialize() {
     for(int i = 0; i < MAX; i++)
         memory[i] = 0;
 }
 
-// Display memory
 void display() {
-    printf("\nMemory Blocks:\n");
+    printf("\nBlock Indices:\n");
+    for(int i = 0; i < MAX; i++) printf("%2d ", i);
+    printf("\n--------------------------------------------------\n");
     for(int i = 0; i < MAX; i++)
-        printf("%d ", memory[i]);
+        printf("%2d ", memory[i]);
     printf("\n");
 }
 
@@ -25,6 +25,7 @@ void display() {
 void contiguous() {
     int start, length, flag = 0;
 
+    printf("\n--- Contiguous Allocation Input ---\n");
     printf("\nEnter starting block: ");
     scanf("%d", &start);
     printf("Enter length: ");
@@ -48,6 +49,7 @@ void contiguous() {
         for(int i = start; i < start + length; i++)
             memory[i] = 1;
 
+        printf("\n--- Contiguous Allocation Results ---\n");
         printf("Contiguous Allocation: ");
         for(int i = start; i < start + length; i++)
             printf("%d ", i);
@@ -58,6 +60,7 @@ void contiguous() {
 void linked() {
     int n, block;
 
+    printf("\n--- Linked Allocation Input ---\n");
     struct node *head = NULL, *temp = NULL, *newNode;
 
     printf("\nEnter number of blocks: ");
@@ -69,7 +72,6 @@ void linked() {
 
         if(block >= MAX || memory[block] == 1) {
             printf("Block %d invalid or already allocated!\n", block);
-            // Cleanup on error
             while(head != NULL) {
                 temp = head;
                 head = head->next;
@@ -89,6 +91,7 @@ void linked() {
             temp = newNode;
         }
     }
+    printf("\n--- Linked Allocation Results ---\n");
     printf("Linked Allocation : ");
     temp = head;
     while(temp != NULL) {
@@ -96,7 +99,6 @@ void linked() {
         temp = temp->next;
     }
     printf("NULL\n");
-    // Cleanup after display
     while(head != NULL) {
         temp = head;
         head = head->next;
@@ -108,6 +110,7 @@ void linked() {
 void indexed() {
     int indexBlock, n;
 
+    printf("\n--- Indexed Allocation Input ---\n");
     printf("\nEnter index block: ");
     scanf("%d", &indexBlock);
 
@@ -135,6 +138,7 @@ void indexed() {
 
         memory[indexArray[i]] = 1;
     }
+    printf("\n--- Indexed Allocation Results ---\n");
 
     printf("Indexed Allocation:\nIndex Block: %d\nBlocks: ", indexBlock);
     for(int i = 0; i < n; i++)
@@ -149,7 +153,7 @@ int main() {
     initialize();
 
     while(1) {
-        printf("\n--- File Allocation ---\n");
+        printf("\n\n===== FILE ALLOCATION MENU =====\n");
         printf("1. Contiguous Allocation\n");
         printf("2. Linked Allocation\n");
         printf("3. Indexed Allocation\n");

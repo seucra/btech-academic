@@ -1,6 +1,10 @@
+*.csv
+
 __pycache__/
 *.pyc
 
 p
 
 *.o
+
+

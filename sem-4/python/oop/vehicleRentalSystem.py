@@ -100,4 +100,4 @@ def run_vehicle_system():
         except Exception as e:
             print("Error:", e)
 
-# run_vehicle_system()  # Uncomment to run
+run_vehicle_system()  # Uncomment to run
